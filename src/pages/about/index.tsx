@@ -5,19 +5,19 @@ const aboutUs = [
   {
     reason: "Excellence and Professionalism",
     message:
-      "At Roaring Renovations we pride ourselves on attention to detail, not only with our work, But also Ensuring client satisfaction. From the first phone call we work Hard to provide you with a unequivocal experience and perfect results every time.",
+      "At Roaring Renovations, we take great pride in our commitment to excellence and professionalism. Our attention to detail goes beyond just the quality of our work; we also prioritize client satisfaction. From the very first phone call, our dedicated team works tirelessly to provide you with an exceptional experience and deliver perfect results every time.",
     icon: <HammerIcon />,
   },
   {
     reason: "Licensed and Insured",
     message:
-      "Rest easy when considering us for your next project. We are fully licensed & insured to Operate in the state of Texas. We only sub-contract licensed/insured professional for electrical, HVAC, plumbing Repairs/installations.",
+      "Rest easy when choosing us for your next project. We are fully licensed and insured to operate in the state of Texas. For added peace of mind, we only work with licensed and insured professionals for electrical, HVAC, and plumbing repairs/installations.",
     icon: <Shield />,
   },
   {
     reason: "Personalized Approach",
     message:
-      "Why Roaring renovations is different. We only use time tested, long lasting products, To ensure a complete shower system that will be water tight and stunning to see. From start to finish You get the Same team. ensuring no corners were skipped and all the clients wishes are fulfilled. unlike some contractors who hire multiple different companies. ",
+      "What sets Roaring Renovations apart is our personalized approach to every project. We only use time-tested, long-lasting products, ensuring a complete shower system that is both water-tight and visually stunning. Throughout the entire process, you will have the same dedicated team working on your project, leaving no room for corners to be cut. Our goal is to fulfill all of our clients' wishes, unlike some contractors who hire multiple different companies.",
     icon: <HeartHandshakeIcon />,
   },
 ];
