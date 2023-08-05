@@ -24,7 +24,7 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Working Hours
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="text-gray-600 font-medium">
                 <li className="mb-4">
                   <span>Mon-Fri: 7:00am-5:00pm</span>
                 </li>
@@ -40,7 +40,7 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Contact us
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="text-gray-600 font-medium">
                 <li className="mb-4">
                   <a href="tel:+18172234268" className="hover:underline ">
                     817-223-4268
@@ -60,16 +60,16 @@ const Footer = () => {
               <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Legal
               </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
+              <ul className="text-gray-600 font-medium">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline">
+                  <Link href="/privacy" className="hover:underline">
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="/terms" className="hover:underline">
                     Terms &amp; Conditions
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -77,7 +77,7 @@ const Footer = () => {
         </div>
         <hr className="my-6 border-black sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          <span className="text-sm text-gray-600">
             © {year}{" "}
             <Link href="/" className="hover:underline">
               Roaring Renovations™

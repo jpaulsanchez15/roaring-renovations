@@ -65,14 +65,14 @@ const Home = () => {
       <div>
         <section
           id="services"
-          className=" w-full my-12 rounded-md p-12 border-b-2 flex flex-col items-center justify-center m-auto"
+          className="bg-black w-full my-12 rounded-md p-12 border-b-2 flex flex-col items-center justify-center m-auto"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-            <h2 className="text-center bg-white rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
+            <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
               Services
             </h2>
             <div className="mt-12">
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
                 {/* TODO: Add image to this */}
                 {services.map((service) => (
                   <ServiceCards
