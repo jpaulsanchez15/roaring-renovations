@@ -45,36 +45,30 @@ const ContactForm = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // TODO: Send the form to API endpoint.
-    toast({
-      title: "Your submission has been sent!",
-      description: "We will be in touch shortly.",
-      variant: "success",
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
     });
-    // const res = await fetch("/api/contact", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(values),
-    // });
 
-    // console.log(values);
+    console.log(values);
 
-    // if (res.ok) {
-    //   form.reset();
-    //   toast({
-    //     title: "Your submission has been sent!",
-    //     description: "We will be in touch shortly.",
-    //     // TODO: Add success variant.
-    //     variant: "default",
-    //   });
-    // } else {
-    //   toast({
-    //     title: "There was an error submitting your form.",
-    //     description: "Please try again later.",
-    //     variant: "destructive",
-    //   });
-    // }
+    if (res.ok) {
+      form.reset();
+      toast({
+        title: "Your submission has been sent!",
+        description: "We will be in touch shortly.",
+        variant: "success",
+      });
+    } else {
+      toast({
+        title: "There was an error submitting your form.",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   /* TODO: Fix mobile formatting for the form.

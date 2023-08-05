@@ -7,8 +7,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface EmailReq extends NextApiRequest {
   body: {
-    firstName: string;
-    lastName: string;
+    name: string;
+    phone: string;
     email: string;
     message: string;
   };
@@ -21,12 +21,17 @@ const sendEmail = async (req: EmailReq, res: NextApiResponse) => {
   // TODO: Add some sort of rate limiter to this.
   try {
     const data = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "jpsanchez1122@gmail.com",
-      reply_to: "jsanchez@forwardscience.com",
+      from: "onboarding@resend.dev", // From self
+      to: "jpsanchez1122@gmail.com", // Self
+      reply_to: `${req.body.email}`,
       subject: "New Contact Request!",
-      react: EmailTemplate({ firstName: "John", message: req.body.message }),
-      text: "Hello world",
+      react: EmailTemplate({
+        name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email,
+        message: req.body.message,
+      }),
+      text: `${req.body.message}`, // required for some reason? Not really srue why.
     });
 
     return res.status(201).json(data);
