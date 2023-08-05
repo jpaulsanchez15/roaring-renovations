@@ -2,8 +2,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
-// const inter = Inter({ subsets: ["latin"] });
-
 type ServiceCardProps = {
   img: string;
   name: string;

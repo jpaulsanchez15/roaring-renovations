@@ -54,6 +54,10 @@ module.exports = {
           DEFAULT: "hsl(var(--roaring-renovations-yellow))",
           foreground: "hsl(var(--roaring-renovations-yellow-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
