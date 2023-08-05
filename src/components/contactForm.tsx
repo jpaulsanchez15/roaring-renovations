@@ -44,6 +44,7 @@ const ContactForm = () => {
   const { toast } = useToast();
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    // TODO: Send the form to API endpoint.
     toast({
       title: "Your submission has been sent!",
       description: "We will be in touch shortly.",
