@@ -43,7 +43,7 @@ const About = () => {
           Roaring Renovations LLC is a family owned construction company
           specializing in bathroom & kitchen remodels.
         </h2>
-        <hr className="mx-auto flex w-[min(120vw,120vh)] items-center justify-center border-b-2 border-gray-400" />
+        {/* <hr className="mx-auto flex w-[min(120vw,120vh)] items-center justify-center border-b-2 border-gray-400" /> */}
       </section>
       <section
         id="mission"
