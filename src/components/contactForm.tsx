@@ -53,8 +53,6 @@ const ContactForm = () => {
       body: JSON.stringify(values),
     });
 
-    console.log(values);
-
     if (res.ok) {
       form.reset();
       toast({
@@ -80,7 +78,7 @@ const ContactForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 mb-12 p-12 rounded-sm bg-white"
+        className="space-y-8 mb-12 rounded-sm bg-white"
       >
         <div className="grid grid-cols-2 gap-3">
           <FormField
@@ -118,7 +116,7 @@ const ContactForm = () => {
             <FormItem>
               <FormLabel>Phone Number</FormLabel>
               <FormControl>
-                <Input placeholder="123-456-7890" {...field} />
+                <Input placeholder="Enter your phone number" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -140,6 +138,7 @@ const ContactForm = () => {
         />
 
         <Button
+          disabled={form.formState.isSubmitting}
           className="m-auto flex flex-col items-center justify-center"
           type="submit"
         >

@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+// TODO: Do we need to add a UserProfile component here?
 export const Navbar = ({
   className,
   ...props
@@ -8,7 +9,7 @@ export const Navbar = ({
   return (
     <nav
       className={cn(
-        "mx-auto border-b-2 border-black h-full flex p-4 bg-roaring-renovations-yellow  items-center justify-center space-x-4 lg:space-x-6",
+        "mx-auto flex p-6 text-black bg-roaring-renovations-yellow items-center justify-center space-x-4 lg:space-x-6",
         className
       )}
       {...props}
@@ -26,12 +27,6 @@ export const Navbar = ({
         About
       </Link>
       <Link
-        href="/services"
-        className="text-md font-medium transition-colors hover:text-muted"
-      >
-        Services
-      </Link>
-      <Link
         href="/gallery"
         className="text-md font-medium transition-colors hover:text-muted"
       >
@@ -42,6 +37,12 @@ export const Navbar = ({
         className="text-md font-medium transition-colors hover:text-muted"
       >
         Contact
+      </Link>
+      <Link
+        href="/services"
+        className="text-md font-medium transition-colors hover:text-muted"
+      >
+        Services
       </Link>
     </nav>
   );
