@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import Head from "next/head";
 
 type ServiceCardProps = {
   img: string;
@@ -61,6 +62,14 @@ const services = [
 const Home = () => {
   return (
     <main>
+      <Head>
+        <title>Roaring Renovations | Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Roaring Renovations LLC is a family owned construction company specializing in bathroom & kitchen remodels, based in Fort Worth, Texas"
+        />
+      </Head>
       <Hero />
       <div>
         <section

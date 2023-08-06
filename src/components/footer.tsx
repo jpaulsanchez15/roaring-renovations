@@ -49,7 +49,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="mailto:Roaring.Renovations7@gmail.com"
-                    className="hover:underline"
+                    className="hover:underline whitespace-normal break-words"
                   >
                     Roaring.Renovations7@gmail.com
                   </a>

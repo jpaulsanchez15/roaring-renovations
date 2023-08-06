@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-// TODO: Do we need to add a UserProfile component here?
 export const Navbar = ({
   className,
   ...props
