@@ -3,7 +3,6 @@ import { HammerIcon, Shield, HeartHandshakeIcon } from "lucide-react";
 import Head from "next/head";
 
 const aboutUs = [
-  // TODO: Fix icon styling here, looks a bit weird next to the title.
   {
     reason: "Excellence and Professionalism",
     message:

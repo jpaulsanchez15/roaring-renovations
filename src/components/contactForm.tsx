@@ -44,7 +44,6 @@ const ContactForm = () => {
   const { toast } = useToast();
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    // TODO: Send the form to API endpoint.
     const res = await fetch("/api/contact", {
       method: "POST",
       headers: {
@@ -68,11 +67,6 @@ const ContactForm = () => {
       });
     }
   };
-
-  /* TODO: Fix mobile formatting for the form.
-   * The form is too far to the left on mobile.
-   * The title is too far to the left on mobile. (Prob fixable on the index page.)
-   */
 
   return (
     <Form {...form}>
