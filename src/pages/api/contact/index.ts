@@ -1,42 +1,66 @@
 import { EmailTemplate } from "@/components/emailTemplate";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { Ratelimit } from "@upstash/ratelimit";
+import { kv } from "@vercel/kv";
+import { NextRequest } from "next/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-interface EmailReq extends NextApiRequest {
-  body: {
-    name: string;
-    phone: string;
-    email: string;
-    message: string;
-  };
-}
+const ratelimit = new Ratelimit({
+  redis: kv,
+  // 5 requests from the same IP in 10 seconds
+  limiter: Ratelimit.slidingWindow(1, "60 s"),
+});
 
-const sendEmail = async (req: EmailReq, res: NextApiResponse) => {
-  //   if (req.method !== "POST") {
-  //     return res.status(405).json({ error: "Method not allowed" });
-  //   }
-  // TODO: Add some sort of rate limiter to this.
+export const config = {
+  runtime: "edge",
+};
+
+type ReqBody = {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+};
+
+const sendEmail = async (req: NextRequest, res: NextApiResponse) => {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
   try {
-    const data = await resend.emails.send({
+    const body: ReqBody = await req.json();
+
+    // const ip = req.ip ?? "127.0.0.1";
+    // const { limit, reset, remaining } = await ratelimit.limit(ip);
+    const { name, phone, email, message } = body;
+
+    await resend.emails.send({
       from: "onboarding@resend.dev", // From self
       to: "jpsanchez1122@gmail.com", // Self
-      reply_to: `${req.body.email}`,
-      subject: "New Contact Request!",
+      reply_to: `${email}`,
+      subject: `New Contact Request: ${name}`,
       react: EmailTemplate({
-        name: req.body.name,
-        phone: req.body.phone,
-        email: req.body.email,
-        message: req.body.message,
+        name: name,
+        phone: phone,
+        email: email,
+        message: message,
       }),
-      text: `${req.body.message}`, // required for some reason? Not really srue why.
+      // Required for some reason? Not really sure why.
+      text: `${message}`,
     });
 
-    return res.status(201).json(data);
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200,
+      //   headers: {
+      //     "X-RateLimit-Limit": limit.toString(),
+      //     "X-RateLimit-Remaining": remaining.toString(),
+      //     "X-RateLimit-Reset": reset.toString(),
+      //   },
+    });
   } catch (error) {
-    return res.status(500).json({ error });
+    // return res.status(500).json({ error });
+    console.error(error);
   }
 };
 
