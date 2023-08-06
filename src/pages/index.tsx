@@ -74,7 +74,7 @@ const Home = () => {
       <div>
         <section
           id="services"
-          className="bg-black w-full my-12 rounded-md p-12 flex flex-col items-center justify-center m-auto"
+          className="bg-black w-full my-12 p-12 flex flex-col items-center justify-center m-auto"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
@@ -98,7 +98,7 @@ const Home = () => {
         </section>
         <section
           id="testimonials"
-          className=" w-full my-12 rounded-md p-12 flex flex-col items-center justify-center m-auto"
+          className="w-full my-12 rounded-md p-12 flex flex-col items-center justify-center m-auto"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <h2 className="text-center bg-white rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">

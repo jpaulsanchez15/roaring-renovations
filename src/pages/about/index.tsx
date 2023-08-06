@@ -8,19 +8,19 @@ const aboutUs = [
     reason: "Excellence and Professionalism",
     message:
       "At Roaring Renovations, we take great pride in our commitment to excellence and professionalism. Our attention to detail goes beyond just the quality of our work; we also prioritize client satisfaction. From the very first phone call, our dedicated team works tirelessly to provide you with an exceptional experience and deliver perfect results every time.",
-    icon: <HammerIcon />,
+    icon: <HammerIcon size={36} />,
   },
   {
     reason: "Licensed and Insured",
     message:
       "Rest easy when choosing us for your next project. We are fully licensed and insured to operate in the state of Texas. For added peace of mind, we only work with licensed and insured professionals for electrical, HVAC, and plumbing repairs/installations.",
-    icon: <Shield />,
+    icon: <Shield size={36} />,
   },
   {
     reason: "Personalized Approach",
     message:
       "What sets Roaring Renovations apart is our personalized approach to every project. We only use time-tested, long-lasting products, ensuring a complete shower system that is both water-tight and visually stunning. Throughout the entire process, you will have the same dedicated team working on your project, leaving no room for corners to be cut. Our goal is to fulfill all of our clients' wishes, unlike some contractors who hire multiple different companies.",
-    icon: <HeartHandshakeIcon />,
+    icon: <HeartHandshakeIcon size={36} />,
   },
 ];
 
@@ -82,11 +82,11 @@ type MissionCardProps = {
 const MissionCards = ({ ...props }: MissionCardProps) => {
   return (
     <Card className="bg-white w-full h-full hover:cursor-pointer hover:bg-slate-100">
-      <CardTitle className="text-center my-4">
+      <div className="flex m-auto items-center justify-center mt-4">
         {props.icon}
-        {props.reason}
-      </CardTitle>
-      <CardContent className="mt-6">{props.message}</CardContent>
+      </div>
+      <CardTitle className="text-center my-4">{props.reason}</CardTitle>
+      <CardContent className="mt-6 text-center">{props.message}</CardContent>
     </Card>
   );
 };
