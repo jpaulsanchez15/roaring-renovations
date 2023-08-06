@@ -16,7 +16,7 @@ const Contact = () => {
         <h1 className="mx-auto mt-24 flex justify-center text-[min(60px,120vh)] font-bold text-roaring-renovations-yellow">
           Contact Us!
         </h1>
-        <hr className="mx-auto flex w-[min(120vw,120vh)] items-center justify-center border-b-2 border-gray-400" />
+        <hr className="my-6 border-black sm:mx-auto dark:border-gray-700 lg:my-8" />
       </section>
       <div className="flex flex-col items-center justify-center m-auto">
         <ContactForm />

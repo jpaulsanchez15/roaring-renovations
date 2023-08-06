@@ -39,15 +39,15 @@ const About = () => {
         <h1 className="mx-auto mt-24 flex justify-center text-[min(60px,120vh)] font-bold text-roaring-renovations-yellow">
           About Us
         </h1>
-        <h2 className="text-base flex justify-center w-1/3 m-auto text-center text-slate-400 sm:text-xl lg:text-lg xl:text-xl">
+        <h2 className="text-lg md:lg:text-base flex justify-center w-1/2 md:lg:w-1/3 m-auto text-center text-slate-400 sm:text-xl lg:text-lg xl:text-xl">
           Roaring Renovations LLC is a family owned construction company
           specializing in bathroom & kitchen remodels.
         </h2>
-        {/* <hr className="mx-auto flex w-[min(120vw,120vh)] items-center justify-center border-b-2 border-gray-400" /> */}
+        <hr className="my-6 w-[320px] md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700 lg:my-8" />
       </section>
       <section
         id="mission"
-        className=" w-full my-12 rounded-md p-12 border-b-2 flex flex-col items-center justify-center m-auto"
+        className=" w-full my-12 rounded-md p-12 flex flex-col items-center justify-center m-auto"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           <h2 className="text-center bg-white rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
