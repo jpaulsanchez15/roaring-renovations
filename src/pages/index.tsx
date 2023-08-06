@@ -5,8 +5,8 @@ import Head from "next/head";
 
 type ServiceCardProps = {
   img: string;
-  name: string;
-  quote: string;
+  service: string;
+  action: string;
   href: string;
 };
 
@@ -38,24 +38,24 @@ const testimonials = [
 const services = [
   // Static.
   {
-    name: "Kitchen & Bathroom Remodeling",
-    quote:
-      "We offer full kitchen and bathroom remodeling services. We can help you design your dream kitchen or bathroom and make it a reality.",
+    service: "Kitchen & Bathroom Remodeling",
+    action:
+      "Transform your kitchen or bathroom into a stunning space with our full remodeling services. From design to implementation, we'll bring your dream vision to life.",
   },
   {
-    name: "Interior/Exterior Painting & Drywall Repairs",
-    quote:
-      "We offer interior updating & panting for walls, crown molding, baseboards, door trim/casing, cabinets, and ceilings. Outside, we offer brick, wood, or vinyl siding replacement and panting.",
+    service: "Interior/Exterior Painting & Drywall Repairs",
+    action:
+      "Refresh the interiors with our expert painting and drywall repair services. From walls and crown molding to cabinets and ceilings, we'll make your home look brand new. On the exterior, we handle siding replacements and painting for a polished finish.",
   },
   {
-    name: "Pergolas, Fences, and Outdoor Kitchens",
-    quote:
-      "Want a cozy place to relax outside, maybe a little more privacy, or a fabulous outdoor kitchen? Let us make your backyard dreams come true. We design custom outdoor structures made to impress and last.",
+    service: "Pergolas, Fences, and Outdoor Kitchens",
+    action:
+      "Create an oasis in your backyard with our custom outdoor structures. Whether it's a cozy pergola, a fence for added privacy, or a fabulous outdoor kitchen, we'll bring your outdoor dreams to reality, leaving you with lasting impressions.",
   },
   {
-    name: "Flooring, Trim, and Much More!",
-    quote:
-      "Getting new flooring or any work inside the home is tough for the customer, but with our clear communication, on-time work schedule and clean work site, Roaring Renovations makes it so much easier!",
+    service: "Flooring, Trim, and Much More!",
+    action:
+      "Upgrade your home with new flooring and exquisite trim work. We understand the challenges of home improvements, but with our transparent communication, punctual work schedule, and tidy work site, Roaring Renovations makes the entire process a breeze!",
   },
 ];
 
@@ -74,7 +74,7 @@ const Home = () => {
       <div>
         <section
           id="services"
-          className="bg-black w-full my-12 rounded-md p-12 border-b-2 flex flex-col items-center justify-center m-auto"
+          className="bg-black w-full my-12 rounded-md p-12 flex flex-col items-center justify-center m-auto"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
@@ -85,11 +85,11 @@ const Home = () => {
                 {/* TODO: Add image to this */}
                 {services.map((service) => (
                   <ServiceCards
-                    key={service.name}
+                    key={service.service}
                     href="/services"
                     img=""
-                    name={service.name}
-                    quote={service.quote}
+                    service={service.service}
+                    action={service.action}
                   />
                 ))}
               </div>
@@ -98,7 +98,7 @@ const Home = () => {
         </section>
         <section
           id="testimonials"
-          className=" w-full my-12 rounded-md p-12 border-b-2 flex flex-col items-center justify-center m-auto"
+          className=" w-full my-12 rounded-md p-12 flex flex-col items-center justify-center m-auto"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <h2 className="text-center bg-white rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
@@ -205,8 +205,8 @@ const ServiceCards = ({ ...props }: ServiceCardProps) => {
   return (
     <Link href={props.href ?? "/"}>
       <Card className="bg-white m-auto h-full hover:cursor-pointer hover:bg-slate-100">
-        <CardTitle className="text-center my-4">{props.name}</CardTitle>
-        <CardContent className="">{props.quote}</CardContent>
+        <CardTitle className="text-center my-4">{props.service}</CardTitle>
+        <CardContent className="">{props.action}</CardContent>
       </Card>
     </Link>
   );
