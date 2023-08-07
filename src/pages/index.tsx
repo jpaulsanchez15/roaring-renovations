@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import Head from "next/head";
+import img from "../../public/roaring-renovations-logo.png";
+import Image from "next/image";
 
 type ServiceCardProps = {
   img: string;
@@ -170,9 +172,11 @@ const Hero = () => {
                         <div className="flex flex-1">
                           <div className="relative flex-1">
                             {/* TODO: Find a better image or fix the sizing here */}
-                            <img
+                            <Image
                               className="object-contain"
-                              src="https://static.wixstatic.com/media/0108b2_369f4807a6c24651bdd9344e319b60b3~mv2.png/v1/fill/w_619,h_512,al_c,lg_1,q_85,enc_auto/8000176E-896B-4547-B4DE-3192A60F4742_edited_edited_edited.png"
+                              width={500}
+                              height={500}
+                              src={img}
                               alt="Roaring Renovations Logo - A renovating company near you in Fort Worth, Texas"
                             />
                           </div>

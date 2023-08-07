@@ -1,41 +1,29 @@
 import { EmailTemplate } from "@/components/emailTemplate";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { Ratelimit } from "@upstash/ratelimit";
 import { kv } from "@vercel/kv";
-import { NextRequest } from "next/server";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const ratelimit = new Ratelimit({
-  redis: kv,
-  // 5 requests from the same IP in 10 seconds
-  limiter: Ratelimit.slidingWindow(1, "60 s"),
-});
+interface EmailReq extends NextApiRequest {
+  body: {
+    name: string;
+    phone: string;
+    email: string;
+    message: string;
+  };
+}
 
-export const config = {
-  runtime: "edge",
-};
-
-type ReqBody = {
-  name: string;
-  phone: string;
-  email: string;
-  message: string;
-};
-
-const sendEmail = async (req: NextRequest, res: NextApiResponse) => {
+const sendEmail = async (req: EmailReq, res: NextApiResponse) => {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
+  // TODO: Add some sort of rate limiter to this.
   try {
-    const body: ReqBody = await req.json();
-
-    // const ip = req.ip ?? "127.0.0.1";
-    // const { limit, reset, remaining } = await ratelimit.limit(ip);
-    const { name, phone, email, message } = body;
-
-    await resend.emails.send({
+    const { name, phone, email, message } = req.body;
+    const data = await resend.emails.send({
       from: "onboarding@resend.dev", // From self
       to: "jpsanchez1122@gmail.com", // Self
       reply_to: `${email}`,
@@ -50,17 +38,9 @@ const sendEmail = async (req: NextRequest, res: NextApiResponse) => {
       text: `${message}`,
     });
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      //   headers: {
-      //     "X-RateLimit-Limit": limit.toString(),
-      //     "X-RateLimit-Remaining": remaining.toString(),
-      //     "X-RateLimit-Reset": reset.toString(),
-      //   },
-    });
+    return res.status(201).json({ data });
   } catch (error) {
-    // return res.status(500).json({ error });
-    console.error(error);
+    return res.status(500).json({ error });
   }
 };
 
