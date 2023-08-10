@@ -1,11 +1,6 @@
 import { EmailTemplate } from "@/components/emailTemplate";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { Ratelimit } from "@upstash/ratelimit";
-import { kv } from "@vercel/kv";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface EmailReq extends NextApiRequest {
   body: {
@@ -16,11 +11,12 @@ interface EmailReq extends NextApiRequest {
   };
 }
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 const sendEmail = async (req: EmailReq, res: NextApiResponse) => {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
-  // TODO: Add some sort of rate limiter to this.
   try {
     const { name, phone, email, message } = req.body;
     const data = await resend.emails.send({

@@ -89,7 +89,7 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({
       </div>
       <div style={footerStyles}>
         <p>
-          This email template is brought to you by{" "}
+          This email was powered by{" "}
           <a href="https://www.jpswebdesign.dev/">JPS Web Design.</a>
         </p>
       </div>

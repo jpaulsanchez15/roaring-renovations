@@ -33,7 +33,6 @@ const ContactForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      // Player Info
       name: "",
       email: "",
       phone: "",
@@ -52,16 +51,22 @@ const ContactForm = () => {
       body: JSON.stringify(values),
     });
 
-    if (res.ok) {
+    if (res.status === 201) {
       form.reset();
       toast({
         title: "Your submission has been sent!",
         description: "We will be in touch shortly.",
         variant: "success",
       });
+    } else if (res.status === 429) {
+      toast({
+        title: "Too many requests",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
     } else {
       toast({
-        title: "There was an error submitting your form.",
+        title: "Something went wrong.",
         description: "Please try again later.",
         variant: "destructive",
       });
