@@ -20,8 +20,8 @@ const sendEmail = async (req: EmailReq, res: NextApiResponse) => {
   try {
     const { name, phone, email, message } = req.body;
     const data = await resend.emails.send({
-      from: "onboarding@resend.dev", // From self
-      to: "jpsanchez1122@gmail.com", // Self
+      from: "roaring-renovations@jpswebdesign.dev",
+      to: "Roaring.Renovations7@gmail.com",
       reply_to: `${email}`,
       subject: `New Contact Request: ${name}`,
       react: EmailTemplate({

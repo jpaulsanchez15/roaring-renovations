@@ -8,38 +8,38 @@ export const Navbar = ({
   return (
     <nav
       className={cn(
-        "mx-auto flex p-6 font-bold text-black bg-roaring-renovations-yellow items-center justify-center space-x-4 lg:space-x-6",
+        "mx-auto flex p-6 font-semibold text-black bg-roaring-renovations-yellow items-center justify-center space-x-4 lg:space-x-6",
         className
       )}
       {...props}
     >
       <Link
         href="/"
-        className="text-md font-bold transition-colors hover:text-muted"
+        className="text-md font-semibold transition-colors hover:text-muted"
       >
         Home
       </Link>
       <Link
         href="/about"
-        className="text-md font-bold transition-colors hover:text-muted"
+        className="text-md font-semibold transition-colors hover:text-muted"
       >
         About
       </Link>
       <Link
         href="/gallery"
-        className="text-md font-bold transition-colors hover:text-muted"
+        className="text-md font-semibold transition-colors hover:text-muted"
       >
         Gallery
       </Link>
       <Link
         href="/contact"
-        className="text-md font-bold transition-colors hover:text-muted"
+        className="text-md font-semibold transition-colors hover:text-muted"
       >
         Contact
       </Link>
       <Link
         href="/services"
-        className="text-md font-bold transition-colors hover:text-muted"
+        className="text-md font-semibold transition-colors hover:text-muted"
       >
         Services
       </Link>

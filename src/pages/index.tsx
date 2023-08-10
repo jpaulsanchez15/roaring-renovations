@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import Head from "next/head";
-import img from "../../public/roaring-renovations-logo.png";
+import img from "../../public/roaringlogo.png";
 import Image from "next/image";
 
 type ServiceCardProps = {
