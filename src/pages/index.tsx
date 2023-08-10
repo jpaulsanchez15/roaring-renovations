@@ -104,7 +104,7 @@ const Home = () => {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <h2 className="text-center bg-white rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
-              Testimonials // Reviews?
+              Reviews
             </h2>
             <div className="mt-12">
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -128,20 +128,24 @@ export default Home;
 
 const Hero = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="pt-10 sm:pt-16 lg:pt-0 lg:pb-14 ">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-          <div className="mx-auto max-w-md sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:pl-0 lg:text-left">
+        <div className="">
+          <div className="mx-auto max-w-md sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:text-left">
             <div className="lg:py-24">
-              <h1 className="text-4xl font-extrabold tracking-tight text-roaring-renovations-yellow sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                <span className="block">Roaring Renovations</span>
-              </h1>
-              <p className="text-base text-slate-400 sm:text-xl lg:text-lg xl:text-xl">
+              <Image
+                className="object-contain"
+                width={600}
+                height={600}
+                src={img}
+                alt="Roaring Renovations Logo - A renovating company near you in Fort Worth, Texas"
+              />
+              <p className="text-base text-center mt-4 text-slate-400 sm:text-xl lg:text-lg xl:text-xl">
                 Trustworthy. Fast. Affordable.
               </p>
               <div className="mt-6 sm:mt-8">
                 <div className="sm:mx-auto sm:max-w-xl lg:mx-0">
-                  <div className="flex flex-wrap gap-x-4 gap-y-2 sm:justify-center lg:justify-start">
+                  <div className="flex flex-wrap items-center m-auto gap-x-4 gap-y-2 sm:justify-center lg:justify-center">
                     <Link href="/contact">
                       <Button
                         className="hover:bg-blackhawksRed/90"
@@ -157,32 +161,6 @@ const Hero = () => {
                         Learn more
                       </Button>
                     </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 lg:relative lg:m-0">
-            <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
-              <div className="w-full lg:absolute lg:inset-y-0 lg:top-1/2 lg:left-0 lg:h-4/5 lg:w-auto lg:max-w-none lg:-translate-y-1/2">
-                <div className="h-full w-full">
-                  <div className="h-full w-full">
-                    <div className="group flex  flex-col overflow lg:w-auto">
-                      <div className="flex flex-1 flex-col">
-                        <div className="flex flex-1">
-                          <div className="relative flex-1">
-                            {/* TODO: Find a better image or fix the sizing here */}
-                            <Image
-                              className="object-contain"
-                              width={500}
-                              height={500}
-                              src={img}
-                              alt="Roaring Renovations Logo - A renovating company near you in Fort Worth, Texas"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
