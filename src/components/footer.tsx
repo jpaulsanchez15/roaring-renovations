@@ -88,6 +88,7 @@ const Footer = () => {
           <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
             <a
               href="https://www.facebook.com/RoaringRenovations/"
+              target="_blank"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <Facebook />
@@ -95,6 +96,7 @@ const Footer = () => {
             </a>
             <a
               href="https://www.instagram.com/roaring_renovations7/"
+              target="_blank"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <Instagram />
