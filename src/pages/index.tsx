@@ -5,15 +5,17 @@ import Head from "next/head";
 import img from "../../public/roaringlogo.png";
 import Image from "next/image";
 import { ContactForm } from "@/components/contactForm";
+import { CardCarousel } from "@/components/carousel";
 
 type TestimonialCardProps = {
   name: string;
   quote: string;
-  href?: string;
+  // href: string;
 };
 
 const testimonials = [
   // Prob pulled from an API and loaded on server side.
+  // Carousel?
   {
     name: "Conner Doe",
     quote:
@@ -43,27 +45,19 @@ const Home = () => {
         />
       </Head>
       <Hero />
-      <hr className="my-6 w-[320px] md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700" />
+      <hr className="w-[320px] md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700" />
       <div>
         <section
           id="see-our-work"
-          className="w-full p-12 flex flex-col items-center justify-center m-auto"
+          className="p-12 flex flex-col items-center justify-center m-auto"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
               See Our Work
             </h2>
-            <div className="mt-12">
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {testimonials.map((testimonial) => (
-                  <TestimonialCards
-                    key={testimonial.name}
-                    name={testimonial.name}
-                    quote={testimonial.quote}
-                  />
-                ))}
-              </div>
-            </div>
+          </div>
+          <div className="w-1/3 flex flex-col items-center justify-center md:lg:flex-row gap-4">
+            placeholder
           </div>
           <Link href="/gallery">
             <Button className="mt-4">View Gallery</Button>
@@ -71,24 +65,24 @@ const Home = () => {
         </section>
         <section
           id="testimonials"
-          className="w-full bg-black p-12 flex flex-col items-center justify-center m-auto"
+          className="bg-black w-full rounded-md p-12 shadow-sm flex flex-col items-center justify-center m-auto"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-            <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
-              Reviews
-            </h2>
-            <div className="mt-12">
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {testimonials.map((testimonial) => (
-                  <TestimonialCards
-                    key={testimonial.name}
-                    name={testimonial.name}
-                    quote={testimonial.quote}
-                  />
-                ))}
-              </div>
-            </div>
+          <h3 className="text-center mb-4 rounded-sm p-2 text-3xl text-roaring-renovations-yellow font-extrabold leading-8 tracking-tight sm:text-4xl">
+            Reviews
+          </h3>
+          <div className="flex flex-col items-center justify-center w-1/3 md:lg:flex-row gap-4">
+            <CardCarousel
+              isBlackBackground={true}
+              components={TestimonialCards}
+            />
           </div>
+          <p className="text-slate-200 font-bold mt-4">
+            Want to read more? Click{" "}
+            <span className="hover:underline hover:text-slate-400 hover:cursor-pointer">
+              here
+            </span>
+            .
+          </p>
         </section>
         <section id="contact">
           <div>
@@ -111,9 +105,9 @@ export default Home;
 const Hero = () => {
   return (
     <div className="flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="pt-10 sm:pt-16 lg:pt-0 lg:pb-14 ">
+      <div className="pt-10 sm:pt-16 lg:pt-0 lg:pb-14">
         <div className="mx-auto max-w-md sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:text-left">
-          <div className="lg:py-24">
+          <div className="lg:py-8">
             <Image
               className="object-contain"
               width={600}
@@ -152,13 +146,22 @@ const Hero = () => {
   );
 };
 
-const TestimonialCards = ({ ...props }: TestimonialCardProps) => {
+const TestimonialCards = () =>
+  testimonials.map((testimonial) => (
+    <TestimonialCard
+      key={testimonial.name}
+      name={testimonial.name}
+      quote={testimonial.quote}
+    />
+  ));
+
+const TestimonialCard = ({ ...props }: TestimonialCardProps) => {
   return (
-    <Link href={props.href ?? "/"}>
-      <Card className="bg-white hover:cursor-pointer hover:bg-slate-100">
-        <CardTitle className="text-center my-4">{props.name}</CardTitle>
-        <CardContent className="mt-6 italic">{props.quote}</CardContent>
-      </Card>
-    </Link>
+    // <Link href={props.href}>
+    <Card className="bg-white hover:cursor-pointer hover:bg-slate-100">
+      <CardTitle className="text-center my-4">{props.name}</CardTitle>
+      <CardContent className="mt-6 italic">{props.quote}</CardContent>
+    </Card>
+    // </Link>
   );
 };

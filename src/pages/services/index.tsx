@@ -1,4 +1,5 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import Head from "next/head";
 import Image from "next/image";
 
 const services = [
@@ -35,28 +36,38 @@ const services = [
 
 const Services = () => {
   return (
-    <section
-      id="services"
-      className="w-full my-12 p-12 flex flex-col items-center justify-center m-auto"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-        <h1 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
-          Services
-        </h1>
-        <div className="mt-12">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
-            {services.map((service) => (
-              <ServiceCards
-                key={service.service}
-                image={service.image}
-                service={service.service}
-                description={service.description}
-              />
-            ))}
+    <>
+      <Head>
+        <title>Roaring Renovations | Services</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="Roaring Renovations is a home renovating company in Fort Worth, Texas. We specialize in kitchen and bathroom remodeling, interior and exterior painting, drywall repairs, pergolas, fences, outdoor kitchens, flooring, trim, and much more!"
+        />
+      </Head>
+      <section
+        id="services"
+        className="w-full my-12 p-12 flex flex-col items-center justify-center m-auto"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+          <h1 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
+            Services
+          </h1>
+          <div className="mt-12">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+              {services.map((service) => (
+                <ServiceCards
+                  key={service.service}
+                  image={service.image}
+                  service={service.service}
+                  description={service.description}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
