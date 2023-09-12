@@ -70,7 +70,7 @@ const Home = () => {
           <h3 className="text-center mb-4 rounded-sm p-2 text-3xl text-roaring-renovations-yellow font-extrabold leading-8 tracking-tight sm:text-4xl">
             Reviews
           </h3>
-          <div className="flex flex-col items-center justify-center w-1/3 md:lg:flex-row gap-4">
+          <div className="flex flex-col items-center justify-center w-full md:lg:w-1/3 md:lg:flex-row gap-4">
             <CardCarousel
               isBlackBackground={true}
               components={TestimonialCards}
