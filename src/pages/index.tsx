@@ -4,13 +4,7 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import Head from "next/head";
 import img from "../../public/roaringlogo.png";
 import Image from "next/image";
-
-type ServiceCardProps = {
-  img: string;
-  service: string;
-  action: string;
-  href: string;
-};
+import { ContactForm } from "@/components/contactForm";
 
 type TestimonialCardProps = {
   name: string;
@@ -37,30 +31,6 @@ const testimonials = [
   },
 ];
 
-const services = [
-  // Static.
-  {
-    service: "Kitchen & Bathroom Remodeling",
-    action:
-      "Transform your kitchen or bathroom into a stunning space with our full remodeling services. From design to implementation, we'll bring your dream vision to life.",
-  },
-  {
-    service: "Interior/Exterior Painting & Drywall Repairs",
-    action:
-      "Refresh the interiors with our expert painting and drywall repair services. From walls and crown molding to cabinets and ceilings, we'll make your home look brand new. On the exterior, we handle siding replacements and painting for a polished finish.",
-  },
-  {
-    service: "Pergolas, Fences, and Outdoor Kitchens",
-    action:
-      "Create an oasis in your backyard with our custom outdoor structures. Whether it's a cozy pergola, a fence for added privacy, or a fabulous outdoor kitchen, we'll bring your outdoor dreams to reality, leaving you with lasting impressions.",
-  },
-  {
-    service: "Flooring, Trim, and Much More!",
-    action:
-      "Upgrade your home with new flooring and exquisite trim work. We understand the challenges of home improvements, but with our transparent communication, punctual work schedule, and tidy work site, Roaring Renovations makes the entire process a breeze!",
-  },
-];
-
 const Home = () => {
   return (
     <main>
@@ -73,37 +43,38 @@ const Home = () => {
         />
       </Head>
       <Hero />
+      <hr className="my-6 w-[320px] md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700" />
       <div>
         <section
-          id="services"
-          className="bg-black w-full my-12 p-12 flex flex-col items-center justify-center m-auto"
+          id="see-our-work"
+          className="w-full p-12 flex flex-col items-center justify-center m-auto"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
-              Services
+              See Our Work
             </h2>
             <div className="mt-12">
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
-                {/* TODO: Add image to this */}
-                {services.map((service) => (
-                  <ServiceCards
-                    key={service.service}
-                    href="/services"
-                    img=""
-                    service={service.service}
-                    action={service.action}
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {testimonials.map((testimonial) => (
+                  <TestimonialCards
+                    key={testimonial.name}
+                    name={testimonial.name}
+                    quote={testimonial.quote}
                   />
                 ))}
               </div>
             </div>
           </div>
+          <Link href="/gallery">
+            <Button className="mt-4">View Gallery</Button>
+          </Link>
         </section>
         <section
           id="testimonials"
-          className="w-full my-12 rounded-md p-12 flex flex-col items-center justify-center m-auto"
+          className="w-full bg-black p-12 flex flex-col items-center justify-center m-auto"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-            <h2 className="text-center bg-white rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
+            <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
               Reviews
             </h2>
             <div className="mt-12">
@@ -119,6 +90,17 @@ const Home = () => {
             </div>
           </div>
         </section>
+        <section id="contact">
+          <div>
+            <h1 className="mx-auto mt-24 flex justify-center text-[min(60px,120vh)] font-bold text-roaring-renovations-yellow text-center">
+              Schedule a Free Quote!
+            </h1>
+            <hr className="my-6 w-[320px] md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700 lg:my-8" />
+          </div>
+          <div className="flex flex-col items-center justify-center m-auto">
+            <ContactForm />
+          </div>
+        </section>
       </div>
     </main>
   );
@@ -130,38 +112,36 @@ const Hero = () => {
   return (
     <div className="flex flex-col items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="pt-10 sm:pt-16 lg:pt-0 lg:pb-14 ">
-        <div className="">
-          <div className="mx-auto max-w-md sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:text-left">
-            <div className="lg:py-24">
-              <Image
-                className="object-contain"
-                width={600}
-                height={600}
-                src={img}
-                alt="Roaring Renovations Logo - A renovating company near you in Fort Worth, Texas"
-              />
-              <p className="text-base text-center mt-4 text-slate-400 sm:text-xl lg:text-lg xl:text-xl">
-                Trustworthy. Fast. Affordable.
-              </p>
-              <div className="mt-6 sm:mt-8">
-                <div className="sm:mx-auto sm:max-w-xl lg:mx-0">
-                  <div className="flex flex-wrap items-center m-auto gap-x-4 gap-y-2 sm:justify-center lg:justify-center">
-                    <Link href="/contact">
-                      <Button
-                        className="hover:bg-blackhawksRed/90"
-                        variant="default"
-                        size="lg"
-                      >
-                        Get a Free Quote
-                      </Button>
-                    </Link>
+        <div className="mx-auto max-w-md sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:text-left">
+          <div className="lg:py-24">
+            <Image
+              className="object-contain"
+              width={600}
+              height={600}
+              src={img}
+              alt="Roaring Renovations Logo - A renovating company near you in Fort Worth, Texas"
+            />
+            <p className="text-base text-center mt-4 text-slate-400 sm:text-xl lg:text-lg xl:text-xl">
+              Trustworthy. Fast. Affordable.
+            </p>
+            <div className="mt-6 sm:mt-8">
+              <div className="sm:mx-auto sm:max-w-xl lg:mx-0">
+                <div className="flex flex-wrap items-center m-auto gap-x-4 gap-y-2 sm:justify-center lg:justify-center">
+                  <Link href="/contact">
+                    <Button
+                      className="hover:bg-blackhawksRed/90"
+                      variant="default"
+                      size="lg"
+                    >
+                      Get a Free Quote
+                    </Button>
+                  </Link>
 
-                    <Link href="/about">
-                      <Button variant="outline" size="lg">
-                        Learn more
-                      </Button>
-                    </Link>
-                  </div>
+                  <Link href="/about">
+                    <Button variant="outline" size="lg">
+                      Learn more
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -178,17 +158,6 @@ const TestimonialCards = ({ ...props }: TestimonialCardProps) => {
       <Card className="bg-white hover:cursor-pointer hover:bg-slate-100">
         <CardTitle className="text-center my-4">{props.name}</CardTitle>
         <CardContent className="mt-6 italic">{props.quote}</CardContent>
-      </Card>
-    </Link>
-  );
-};
-
-const ServiceCards = ({ ...props }: ServiceCardProps) => {
-  return (
-    <Link href={props.href ?? "/"}>
-      <Card className="bg-white m-auto h-full hover:cursor-pointer hover:bg-slate-100">
-        <CardTitle className="text-center my-4">{props.service}</CardTitle>
-        <CardContent className="">{props.action}</CardContent>
       </Card>
     </Link>
   );
