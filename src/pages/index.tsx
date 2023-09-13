@@ -6,32 +6,7 @@ import img from "../../public/roaringlogo.png";
 import Image from "next/image";
 import { ContactForm } from "@/components/contactForm";
 import { CardCarousel } from "@/components/carousel";
-
-type TestimonialCardProps = {
-  name: string;
-  quote: string;
-  // href: string;
-};
-
-const testimonials = [
-  // Prob pulled from an API and loaded on server side.
-  // Carousel?
-  {
-    name: "Conner Doe",
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc.",
-  },
-  {
-    name: "John Doe",
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc.",
-  },
-  {
-    name: "Spencer Doe",
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc.",
-  },
-];
+import { FindMore } from "@/components/findMore";
 
 const Home = () => {
   return (
@@ -57,7 +32,26 @@ const Home = () => {
             </h2>
           </div>
           <div className="w-1/3 flex flex-col items-center justify-center md:lg:flex-row gap-4">
-            placeholder
+            {testimonials.map((testimonial) => {
+              return (
+                <div
+                  key={testimonial.name}
+                  className="flex flex-col items-center justify-center w-full md:lg:w-1/3 gap-4"
+                >
+                  <Card
+                    className="bg-white hover:cursor-pointer hover:bg-slate-100"
+                    key={testimonial.name}
+                  >
+                    <CardTitle className="text-center my-4">
+                      {testimonial.name}
+                    </CardTitle>
+                    <CardContent className="mt-6 italic">
+                      {testimonial.quote}
+                    </CardContent>
+                  </Card>
+                </div>
+              );
+            })}
           </div>
           <Link href="/gallery">
             <Button className="mt-4">View Gallery</Button>
@@ -65,7 +59,7 @@ const Home = () => {
         </section>
         <section
           id="testimonials"
-          className="bg-black w-full rounded-md p-12 shadow-sm flex flex-col items-center justify-center m-auto"
+          className="bg-black w-full p-12 shadow-sm flex flex-col items-center justify-center m-auto"
         >
           <h3 className="text-center mb-4 rounded-sm p-2 text-3xl text-roaring-renovations-yellow font-extrabold leading-8 tracking-tight sm:text-4xl">
             Reviews
@@ -76,13 +70,11 @@ const Home = () => {
               components={TestimonialCards}
             />
           </div>
-          <p className="text-slate-200 font-bold mt-4">
-            Want to read more? Click{" "}
-            <span className="hover:underline hover:text-slate-400 hover:cursor-pointer">
-              here
-            </span>
-            .
-          </p>
+          <FindMore
+            message="Read more reviews from our wonderful clients."
+            CTA="Click here"
+            href="/"
+          />
         </section>
         <section id="contact">
           <div>
@@ -145,6 +137,32 @@ const Hero = () => {
     </div>
   );
 };
+
+type TestimonialCardProps = {
+  name: string;
+  quote: string;
+  // href: string;
+};
+
+const testimonials = [
+  // Prob pulled from an API and loaded on server side.
+  // Carousel?
+  {
+    name: "Conner Doe",
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc.",
+  },
+  {
+    name: "John Doe",
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc.",
+  },
+  {
+    name: "Spencer Doe",
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc. Sed euismod, diam quis aliquam faucibus, nisl nunc aliquet nunc, vitae aliquam nisl nunc a nunc.",
+  },
+];
 
 const TestimonialCards = () =>
   testimonials.map((testimonial) => (

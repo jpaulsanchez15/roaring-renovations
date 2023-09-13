@@ -1,3 +1,4 @@
+import { FindMore } from "@/components/findMore";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import Head from "next/head";
 import Image from "next/image";
@@ -67,6 +68,13 @@ const Services = () => {
           </div>
         </div>
       </section>
+      <div className="mb-12">
+        <FindMore
+          href="/contact"
+          message="Wanting to schedule a free quote?"
+          CTA="Contact Us"
+        />
+      </div>
     </>
   );
 };
