@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import Head from "next/head";
 import img from "../../public/roaringlogo.png";
+import bathroomImg from "../../public/bathroom-1.jpeg";
+import deckImg from "../../public/deck-image.jpeg";
 import Image from "next/image";
 import { ContactForm } from "@/components/contactForm";
 import { CardCarousel } from "@/components/carousel";
@@ -20,7 +22,7 @@ const Home = () => {
         />
       </Head>
       <Hero />
-      <hr className="w-[320px] md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700" />
+      <hr className="w-[320px] mt-12 md:lg:mt-0 md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700" />
       <div>
         <section
           id="see-our-work"
@@ -30,29 +32,15 @@ const Home = () => {
             <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
               See Our Work
             </h2>
+            <div>
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <ImageCard img={bathroomImg.src} />
+                <ImageCard img={deckImg.src} />
+                <ImageCard img={bathroomImg.src} />
+              </div>
+            </div>
           </div>
-          <div className="w-1/3 flex flex-col items-center justify-center md:lg:flex-row gap-4">
-            {testimonials.map((testimonial) => {
-              return (
-                <div
-                  key={testimonial.name}
-                  className="flex flex-col items-center justify-center w-full md:lg:w-1/3 gap-4"
-                >
-                  <Card
-                    className="bg-white hover:cursor-pointer hover:bg-slate-100"
-                    key={testimonial.name}
-                  >
-                    <CardTitle className="text-center my-4">
-                      {testimonial.name}
-                    </CardTitle>
-                    <CardContent className="mt-6 italic">
-                      {testimonial.quote}
-                    </CardContent>
-                  </Card>
-                </div>
-              );
-            })}
-          </div>
+          <div className="w-1/3 flex flex-col items-center justify-center md:lg:flex-row gap-4"></div>
           <Link href="/gallery">
             <Button className="mt-4">View Gallery</Button>
           </Link>
@@ -144,6 +132,10 @@ type TestimonialCardProps = {
   // href: string;
 };
 
+type ImageCardProps = {
+  img: string;
+};
+
 const testimonials = [
   // Prob pulled from an API and loaded on server side.
   // Carousel?
@@ -181,5 +173,19 @@ const TestimonialCard = ({ ...props }: TestimonialCardProps) => {
       <CardContent className="mt-6 italic">{props.quote}</CardContent>
     </Card>
     // </Link>
+  );
+};
+
+const ImageCard = ({ ...props }: ImageCardProps) => {
+  return (
+    <Card className="bg-white h-full w-full hover:cursor-pointer  hover:bg-slate-100">
+      <Image
+        alt={"Roaring Renovations"}
+        className="w-full h-[425px] rounded-sm hover:shadow-sm"
+        src={props.img}
+        width={400}
+        height={50}
+      />
+    </Card>
   );
 };
