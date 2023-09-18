@@ -24,26 +24,24 @@ const Home = () => {
       <Hero />
       <hr className="w-[320px] mt-12 md:lg:mt-0 md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700" />
       <div>
-        <section
-          id="see-our-work"
-          className="p-12 flex flex-col items-center justify-center m-auto"
-        >
+        <section id="see-our-work">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
               See Our Work
             </h2>
             <div>
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="flex flex-col my-3 px-3 md:lg:flex-row items-center md:lg:w-full md:lg:justify-center m-auto justify-between gap-4">
                 <ImageCard img={bathroomImg.src} />
                 <ImageCard img={deckImg.src} />
                 <ImageCard img={bathroomImg.src} />
               </div>
             </div>
           </div>
-          <div className="w-1/3 flex flex-col items-center justify-center md:lg:flex-row gap-4"></div>
-          <Link href="/gallery">
-            <Button className="mt-4">View Gallery</Button>
-          </Link>
+          <div className="flex flex-col items-center justify-center md:lg:flex-row gap-4">
+            <Link href="/gallery">
+              <Button className="my-4">View Gallery</Button>
+            </Link>
+          </div>
         </section>
         <section
           id="testimonials"
@@ -58,11 +56,7 @@ const Home = () => {
               components={TestimonialCards}
             />
           </div>
-          <FindMore
-            message="Read more reviews from our wonderful clients."
-            CTA="Click here"
-            href="/"
-          />
+          <FindMore message="Read more reviews" CTA="here" href="/" />
         </section>
         <section id="contact">
           <div>
@@ -138,7 +132,6 @@ type ImageCardProps = {
 
 const testimonials = [
   // Prob pulled from an API and loaded on server side.
-  // Carousel?
   {
     name: "Conner Doe",
     quote:

@@ -20,7 +20,7 @@ const CardCarousel = ({ components, isBlackBackground }: CardCarouselProps) => {
   };
 
   return (
-    <div className="flex md:lg:gap-8">
+    <div className="flex gap-3 md:lg:gap-8">
       <button className="disabled:cursor-not-allowed" onClick={handlePrevious}>
         <MinusCircle color={isBlackBackground ? "white" : "black"} />
       </button>

@@ -45,25 +45,22 @@ const Services = () => {
           content="Roaring Renovations is a home renovating company in Fort Worth, Texas. We specialize in kitchen and bathroom remodeling, interior and exterior painting, drywall repairs, pergolas, fences, outdoor kitchens, flooring, trim, and much more!"
         />
       </Head>
-      <section
-        id="services"
-        className="w-full my-12 p-12 flex flex-col items-center justify-center m-auto"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-          <h1 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
-            Services
-          </h1>
-          <div className="mt-12">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
-              {services.map((service) => (
-                <ServiceCards
-                  key={service.service}
-                  image={service.image}
-                  service={service.service}
-                  description={service.description}
-                />
-              ))}
-            </div>
+      <section id="services">
+        <h1 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
+          Services
+        </h1>
+        <hr className="w-[320px] md:lg:mt-0 md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700" />
+
+        <div className="mt-12 px-4">
+          <div className="flex flex-col items-center justify-center md:lg:flex-row gap-4">
+            {services.map((service) => (
+              <ServiceCards
+                key={service.service}
+                image={service.image}
+                service={service.service}
+                description={service.description}
+              />
+            ))}
           </div>
         </div>
       </section>
