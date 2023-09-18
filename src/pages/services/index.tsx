@@ -1,5 +1,10 @@
 import { FindMore } from "@/components/findMore";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardTitle,
+} from "@/components/ui/card";
 import Head from "next/head";
 import Image from "next/image";
 import bathroomImg from "../../../public/kitchen-and-bathroom.jpeg";
@@ -46,21 +51,16 @@ const Services = () => {
         />
       </Head>
       <section id="services">
-        <h1 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
-          Services
-        </h1>
-        <hr className="w-[320px] md:lg:mt-0 md:lg:w-1/2 justify-center items-center flex mx-auto border-black sm:mx-auto dark:border-gray-700" />
-
-        <div className="mt-12 px-4">
-          <div className="flex flex-col items-center justify-center md:lg:flex-row gap-4">
-            {services.map((service) => (
-              <ServiceCards
-                key={service.service}
-                image={service.image}
-                service={service.service}
-                description={service.description}
-              />
-            ))}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+          <h2 className="text-center rounded-sm py-4 text-3xl font-extrabold items-center justify-center text-roaring-renovations-yellow sm:text-4xl">
+            See Our Work
+          </h2>
+          <div>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
+              {services.map((service) => (
+                <ImageCard key={service.service} {...service} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -77,25 +77,24 @@ const Services = () => {
 
 export default Services;
 
-type ServiceCardProps = {
+type ImageCardProps = {
   service: string;
   description: string;
   image: string;
 };
 
-const ServiceCards = ({ ...props }: ServiceCardProps) => {
+const ImageCard = ({ ...props }: ImageCardProps) => {
   return (
-    <Card className="bg-white w-full h-full hover:cursor-pointer hover:bg-slate-100">
+    <Card className="bg-white h-full w-full hover:cursor-pointer  hover:bg-slate-100">
       <Image
+        alt={"Roaring Renovations"}
+        className="w-full h-[425px] rounded-sm hover:shadow-sm"
         src={props.image}
         width={400}
         height={50}
-        alt={`Roaring Renovations ${props.service} - A renovating company near you in Fort Worth, Texas`}
-        // TODO: Need to add mobile formatting.
-        className="w-full h-[425px] rounded-t-md"
       />
-      <CardTitle className="text-center my-4">{props.service}</CardTitle>
-      <CardContent className="mt-6 text-center">
+      <CardTitle className="text-center mt-6">{props.service}</CardTitle>
+      <CardContent className="text-center mt-6">
         {props.description}
       </CardContent>
     </Card>
